@@ -1,0 +1,32 @@
+{
+  "docs": [
+    {
+      "uuid": "81bec382-0b3a-4fb3-a323-1e41f52a643d",
+      "slug": "installation",
+      "path": "docs/INSTALLATION.md",
+      "title": "Installing RISC-V locally",
+      "blurb": "Learn how to install RISC-V locally to solve Exercism's exercises on your own machine"
+    },
+    {
+      "uuid": "98aace6a-2aae-4ccc-8c11-4e6424b864fc",
+      "slug": "learning",
+      "path": "docs/LEARNING.md",
+      "title": "How to learn RISC-V",
+      "blurb": "An overview of how to get started from scratch with RISC-V"
+    },
+    {
+      "uuid": "abcdcf46-c818-4ada-8fae-e048d30c735e",
+      "slug": "tests",
+      "path": "docs/TESTS.md",
+      "title": "Testing on the RISC-V track",
+      "blurb": "Learn how to test your RISC-V exercises on Exercism"
+    },
+    {
+      "uuid": "cf8c338e-a3ad-4c93-8b32-9114186a73f3",
+      "slug": "resources",
+      "path": "docs/RESOURCES.md",
+      "title": "Useful RISC-V resources",
+      "blurb": "A collection of useful resources to help you master RISC-V"
+    }
+  ]
+}
