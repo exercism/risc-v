@@ -25,7 +25,7 @@ Install Make and QEMU's user-mode emulators:
 sudo apt install make qemu-user
 ```
 
-Then install Zig 0.16.0 or later as described under [Direct download][zig-install].
+Then install Zig 0.15.2 or later as described under [Direct download][zig-install].
 
 ## Fedora
 
