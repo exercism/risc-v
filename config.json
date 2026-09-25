@@ -658,33 +658,33 @@
   },
   "key_features": [
     {
-      "title": "Few rules, no surprises",
-      "content": "Fixed-size instructions, 32 registers, one way to do things. Less to memorise than most languages.",
+      "title": "Small and regular",
+      "content": "A few dozen core instructions that all follow the same simple patterns. Less to memorise.",
       "icon": "small"
     },
     {
       "title": "See how computers work",
-      "content": "Registers, memory and jumps instead of variables, lists and loops. Nothing is hidden from you.",
+      "content": "Work directly with registers and memory. Nothing sits between your code and the processor.",
       "icon": "powerful"
     },
     {
       "title": "Free and open",
-      "content": "No company owns RISC-V. The specification is free to read and anyone may build a chip for it.",
+      "content": "Anyone can read the specification and build a RISC-V chip, without paying licence fees.",
       "icon": "community"
     },
     {
-      "title": "Growing fast",
-      "content": "Ships in billions of chips and gaining ground every year, from tiny microcontrollers to servers.",
-      "icon": "evolving"
+      "title": "Found in real devices",
+      "content": "RISC-V chips run inside microcontrollers, single-board computers, storage drives and more.",
+      "icon": "widely-used"
     },
     {
-      "title": "Taught in universities",
-      "content": "The standard textbooks now use RISC-V, so this gives you a head start on any CS degree.",
-      "icon": "documentation"
+      "title": "Made for learning",
+      "content": "Its clean design makes it a popular choice for teaching how processors work.",
+      "icon": "easy"
     },
     {
       "title": "No hardware needed",
-      "content": "Programs run under QEMU emulation on Linux, so all you need is a free toolchain and a terminal.",
+      "content": "Solve exercises in the online editor, or locally with a free emulator. No RISC-V board required.",
       "icon": "tooling"
     }
   ],
