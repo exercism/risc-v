@@ -656,6 +656,38 @@
       "robot-name"
     ]
   },
+  "key_features": [
+    {
+      "title": "Few rules, no surprises",
+      "content": "Fixed-size instructions, 32 registers, one way to do things. Less to memorise than most languages.",
+      "icon": "small"
+    },
+    {
+      "title": "See how computers work",
+      "content": "Registers, memory and jumps instead of variables, lists and loops. Nothing is hidden from you.",
+      "icon": "powerful"
+    },
+    {
+      "title": "Free and open",
+      "content": "No company owns RISC-V. The specification is free to read and anyone may build a chip for it.",
+      "icon": "community"
+    },
+    {
+      "title": "Growing fast",
+      "content": "Ships in billions of chips and gaining ground every year, from tiny microcontrollers to servers.",
+      "icon": "evolving"
+    },
+    {
+      "title": "Taught in universities",
+      "content": "The standard textbooks now use RISC-V, so this gives you a head start on any CS degree.",
+      "icon": "documentation"
+    },
+    {
+      "title": "No hardware needed",
+      "content": "Programs run under QEMU emulation on Linux, so all you need is a free toolchain and a terminal.",
+      "icon": "tooling"
+    }
+  ],
   "tags": [
     "execution_mode/compiled",
     "paradigm/imperative",
