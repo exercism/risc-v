@@ -659,7 +659,7 @@
   "key_features": [
     {
       "title": "Small and regular",
-      "content": "A few dozen core instructions that all follow the same simple patterns. Less to memorise.",
+      "content": "A few dozen core instructions that all follow the same simple patterns.",
       "icon": "small"
     },
     {
@@ -684,7 +684,7 @@
     },
     {
       "title": "No hardware needed",
-      "content": "Solve exercises in the online editor, or locally with a free emulator. No RISC-V board required.",
+      "content": "Solve exercises in the online editor, or locally with a free emulator.",
       "icon": "tooling"
     }
   ],
