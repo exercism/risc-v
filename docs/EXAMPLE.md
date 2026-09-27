@@ -1,6 +1,6 @@
 # Example
 
-```asm
+```riscvasm
 .equ FRAME_SIZE, 16
 
 .text
@@ -13,7 +13,7 @@ Lines that start with a dot are _directives_: instructions for the assembler, ra
 `.global` makes the label `is_triple` visible outside this file, so other code can call it.
 You may also see `.globl`, which means the same thing.
 
-```asm
+```riscvasm
 /* bool is_triple(unsigned a, unsigned b, unsigned c); */
 is_triple:
 ```
@@ -23,7 +23,7 @@ For example, `(6, 8, 10)` gives 1, because `36 + 64 = 100`.
 The label `is_triple` marks where the function starts.
 It is called with `a`, `b` and `c` in the registers `a0`, `a1` and `a2`.
 
-```asm
+```riscvasm
         addi    sp, sp, -FRAME_SIZE
         sw      ra, 12(sp)      /* save the return address */
         sw      a1, 8(sp)       /* save b */
@@ -36,7 +36,7 @@ The stack grows down, towards smaller addresses, so subtracting 16 from the stac
 (`sp` must always be a multiple of 16.)
 We also save `b` and `c`, because a function we call is allowed to change the `a` registers.
 
-```asm
+```riscvasm
         call    square          /* a0 = a * a */
         sw      a0, 0(sp)       /* save a * a */
 ```
@@ -44,7 +44,7 @@ We also save `b` and `c`, because a function we call is allowed to change the `a
 `a` is already in `a0`, where `square` expects its input.
 `call` sets `ra` to the next instruction and jumps to `square`, which returns its result in `a0`.
 
-```asm
+```riscvasm
         lw      a0, 8(sp)       /* a0 = b */
         call    square          /* a0 = b * b */
         lw      t0, 0(sp)       /* t0 = a * a */
@@ -54,7 +54,7 @@ We also save `b` and `c`, because a function we call is allowed to change the `a
 
 We load `b` back from the stack, square it, and add it to `a * a`.
 
-```asm
+```riscvasm
         lw      a0, 4(sp)       /* a0 = c */
         call    square          /* a0 = c * c */
         lw      t0, 0(sp)       /* t0 = a * a + b * b */
@@ -65,7 +65,7 @@ We load `b` back from the stack, square it, and add it to `a * a`.
 The difference is zero exactly when `a² + b² = c²`.
 `seqz` ("set if equal to zero") turns that into 1 or 0.
 
-```asm
+```riscvasm
         lw      ra, 12(sp)      /* restore the return address */
         addi    sp, sp, FRAME_SIZE
         ret
@@ -74,7 +74,7 @@ The difference is zero exactly when `a² + b² = c²`.
 We restore `ra` and hand back the 16 bytes of stack.
 `ret` then jumps to the address in `ra`, back to the caller.
 
-```asm
+```riscvasm
 /* unsigned square(unsigned n); */
 square:
         mul     a0, a0, a0      /* n * n */
