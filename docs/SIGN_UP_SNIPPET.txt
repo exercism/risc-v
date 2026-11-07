@@ -1,0 +1,13 @@
+count_char:
+        li      t0, 0
+.loop:
+        lbu     t1, 0(a0)
+        beqz    t1, .done
+        bne     t1, a1, .next
+        addi    t0, t0, 1
+.next:
+        addi    a0, a0, 1
+        j       .loop
+.done:
+        mv      a0, t0
+        ret
