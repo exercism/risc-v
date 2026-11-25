@@ -44,9 +44,32 @@ unskip_tests() {
     done
 }
 
+# The vector length qemu emulates by default, and a longer one. A solution
+# that uses the vector extension has to work whatever the hardware's vector
+# length, so those exercises are run under both. The second run also fills
+# "agnostic" tail and inactive elements with ones, as hardware may, so that
+# code relying on them being left alone (ta/ma where tu/mu is needed) fails.
+VECTOR_CPUS=(
+    "rv32,v=true,vlen=128,vext_spec=v1.0"
+    "rv32,v=true,vlen=512,vext_spec=v1.0,rvv_ta_all_1s=true,rvv_ma_all_1s=true"
+)
+
+uses_vector_extension() {
+    grep -Eqs '^[[:space:]]*\.option[[:space:]]+arch,.*\+v\b' ./*.S
+}
+
 # The test program exits non-zero when any test fails.
 run_tests() {
-    make -s clean && make -s tests && qemu-riscv32 ./tests
+    make -s clean && make -s tests || return
+    if uses_vector_extension; then
+        local cpu
+        for cpu in "${VECTOR_CPUS[@]}"; do
+            echo "qemu-riscv32 -cpu ${cpu}"
+            QEMU_CPU="${cpu}" qemu-riscv32 ./tests || return
+        done
+    else
+        qemu-riscv32 ./tests
+    fi
 }
 
 # Prints one line per exercise, followed by the build and test output when

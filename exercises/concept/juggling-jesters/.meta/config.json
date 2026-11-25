@@ -1,0 +1,18 @@
+{
+  "authors": [
+    "keiravillekode"
+  ],
+  "files": {
+    "solution": [
+      "juggling_jesters.S"
+    ],
+    "test": [
+      "juggling_jesters_test.c"
+    ],
+    "exemplar": [
+      ".meta/exemplar.S"
+    ]
+  },
+  "icon": "circus-acts",
+  "blurb": "Learn about calling your own functions in RISC-V assembly by scoring the juggling jesters of a travelling Pacific circus."
+}

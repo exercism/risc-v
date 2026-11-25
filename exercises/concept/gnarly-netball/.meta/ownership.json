@@ -1,0 +1,9 @@
+{
+  "tasks": {
+    "ladder_points": 1,
+    "goals_per_quarter": 2,
+    "average_margin": 3,
+    "oranges_left": 4,
+    "buses_needed": 5
+  }
+}

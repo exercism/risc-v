@@ -1,0 +1,10 @@
+{
+  "tasks": {
+    "piece_value": 1,
+    "promote_pawn": 2,
+    "empty_squares": 3,
+    "on_board": 4,
+    "result_points": 5,
+    "match_result": 6
+  }
+}

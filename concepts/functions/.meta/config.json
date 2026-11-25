@@ -1,0 +1,7 @@
+{
+  "blurb": "Learn how RISC-V functions call helper functions with call, ret and jal, and why the return address in ra must be kept safe.",
+  "authors": [
+    "keiravillekode"
+  ],
+  "contributors": []
+}

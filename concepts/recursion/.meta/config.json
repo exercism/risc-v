@@ -1,0 +1,7 @@
+{
+  "blurb": "Learn how RISC-V functions call themselves, with a stack frame for each call, and how recursion walks a tree stored in memory.",
+  "authors": [
+    "keiravillekode"
+  ],
+  "contributors": []
+}

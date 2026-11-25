@@ -1,0 +1,18 @@
+{
+  "authors": [
+    "keiravillekode"
+  ],
+  "files": {
+    "solution": [
+      "clubhouse_codes.S"
+    ],
+    "test": [
+      "clubhouse_codes_test.c"
+    ],
+    "exemplar": [
+      ".meta/exemplar.S"
+    ]
+  },
+  "icon": "secret-agent",
+  "blurb": "Learn about bitwise operations by working with the secret door knocks of a detective club in a Samoan beach village."
+}

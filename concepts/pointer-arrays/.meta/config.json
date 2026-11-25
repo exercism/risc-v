@@ -1,0 +1,7 @@
+{
+  "blurb": "Learn how lists of strings are stored as arrays of pointers, and how to follow each pointer to its characters.",
+  "authors": [
+    "keiravillekode"
+  ],
+  "contributors": []
+}

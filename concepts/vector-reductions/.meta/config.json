@@ -1,0 +1,7 @@
+{
+  "blurb": "Learn to reduce a whole array to one value with RISC-V vector reductions such as vredsum, vredmin and vredmax.",
+  "authors": [
+    "keiravillekode"
+  ],
+  "contributors": []
+}

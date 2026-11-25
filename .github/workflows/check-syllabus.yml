@@ -1,0 +1,37 @@
+name: Syllabus
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Syllabus rules
+    runs-on: ubuntu-26.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      # Rules this track adds on top of configlet's own checks:
+      #
+      #   * one concept per concept exercise, and one exercise per concept
+      #   * concepts/<slug>/introduction.md byte-identical to the matching
+      #     exercises/concept/<exercise>/.docs/introduction.md
+      #   * the concepts array in the same order as the exercises that teach
+      #     them
+      #   * no exercise placed before an exercise teaching one of its
+      #     prerequisites
+      #   * practice exercises listed by ascending difficulty then by name,
+      #     compared case-insensitively
+      #   * every concept exercise has its own icon, which is not the icon of
+      #     a practice exercise
+      #
+      - name: Check syllabus rules
+        run: bin/check-syllabus

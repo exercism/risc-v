@@ -1,0 +1,10 @@
+{
+  "tasks": {
+    "record_count": 1,
+    "longest_record": 2,
+    "find_name": 3,
+    "count_starting_with": 4,
+    "grid_char": 5,
+    "collect_short": 6
+  }
+}

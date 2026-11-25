@@ -1,0 +1,7 @@
+{
+  "blurb": "Learn how to load and store 16-bit values with lh, lhu and sh, and how sign extension and zero extension work.",
+  "authors": [
+    "keiravillekode"
+  ],
+  "contributors": []
+}

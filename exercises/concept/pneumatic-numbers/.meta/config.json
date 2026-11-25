@@ -1,0 +1,18 @@
+{
+  "authors": [
+    "keiravillekode"
+  ],
+  "files": {
+    "solution": [
+      "pneumatic_numbers.S"
+    ],
+    "test": [
+      "pneumatic_numbers_test.c"
+    ],
+    "exemplar": [
+      ".meta/exemplar.S"
+    ]
+  },
+  "icon": "rpn-calculator",
+  "blurb": "Learn about jump tables and function pointers by helping a Suva school science club bring an old air-powered calculating machine back to life."
+}

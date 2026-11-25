@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://github.com/riscvarchive/riscv-v-spec/releases/tag/v1.0",
+    "description": "RISC-V \"V\" Vector Extension, version 1.0"
+  },
+  {
+    "url": "https://github.com/riscv/riscv-isa-manual/releases",
+    "description": "RISC-V specifications, including the vector extension chapter"
+  },
+  {
+    "url": "https://github.com/riscv-non-isa/riscv-elf-psabi-doc/blob/master/riscv-cc.adoc",
+    "description": "RISC-V calling convention: vector registers are temporaries"
+  }
+]

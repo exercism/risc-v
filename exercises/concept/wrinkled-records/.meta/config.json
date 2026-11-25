@@ -1,0 +1,18 @@
+{
+  "authors": [
+    "keiravillekode"
+  ],
+  "files": {
+    "solution": [
+      "wrinkled_records.S"
+    ],
+    "test": [
+      "wrinkled_records_test.c"
+    ],
+    "exemplar": [
+      ".meta/exemplar.S"
+    ]
+  },
+  "icon": "secrets",
+  "blurb": "Learn about arrays of pointers to strings by helping a Honiara detective club sort through a box of old case records."
+}

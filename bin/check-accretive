@@ -1,0 +1,358 @@
+#!/usr/bin/env python3
+"""Check that every concept exercise is Accretive.
+
+A concept exercise is Accretive when a student who correctly implements the
+first K tasks, and leaves the remaining functions as the shipped stubs, sees
+every test for tasks 1..K pass. See accretive-audit.md for the reasoning.
+
+For each exercise, and each K from 0 to the number of tasks N, this builds a
+solution in which the functions of tasks 1..K come from the exemplar and the
+rest come from the stub, runs every test (none skipped), and checks:
+
+  * K = 0: the stub alone builds and links (Mode A), unless the exercise's
+    .meta/ownership.json says "requires-task1-to-link".
+  * K >= 1: every test for tasks 1..K passes (Mode B).
+  * K < N: at least one test for task K+1 fails, so a stub that happens to
+    return its first argument cannot pass a whole task by accident.
+
+Mixing the two files needs no assembly parsing. A .S file goes through the C
+preprocessor, so assembling the exemplar with -Dname=__accretive_exemplar_name
+moves a later task's function out of the way, and assembling the stub with
+-Dname=__accretive_stub_name does the same for an earlier task's function.
+
+It also checks the structure the runtime checks rely on: the tests are grouped
+by ascending "// TASK: N" markers covering exactly the "## N." headings of
+instructions.md, they run in that order, every function in ownership.json is
+a .global of the stub, and each is named in its own task's instructions.
+
+Usage:
+  bin/check-accretive              # every concept exercise
+  bin/check-accretive slug...      # just these
+  JOBS=4 bin/check-accretive       # at most four exercises at a time
+
+Requires: python3, zig, qemu-riscv32 (the same tools as bin/verify-exercises).
+"""
+
+import concurrent.futures
+import json
+import os
+import re
+import shutil
+import subprocess
+import sys
+import tempfile
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+RUN_TIMEOUT = 20  # seconds, per test program
+
+TASK_MARKER = re.compile(r"^\s*//\s*TASK:\s*(\d+)\s*$")
+TEST_DEFINITION = re.compile(r"^\s*void\s+(test_\w+)\s*\(\s*void\s*\)")
+RUN_TEST = re.compile(r"^\s*RUN_TEST\(\s*(test_\w+)\s*\)")
+TASK_HEADING = re.compile(r"^##\s+(\d+)\.")
+GLOBAL = re.compile(r"^\s*\.globa?l\s+(\w+)")
+RESULT = re.compile(r"^[^:\n]+:\d+:(test_\w+):(PASS|FAIL|IGNORE)")
+
+
+class Problem(Exception):
+    pass
+
+
+def snake(slug):
+    return slug.replace("-", "_")
+
+
+def compiler(exercise_dir):
+    """The CC line of the exercise's Makefile, as an argument list."""
+    for line in (exercise_dir / "Makefile").read_text().splitlines():
+        m = re.match(r"^CC\s*=\s*(.+)$", line)
+        if m:
+            return m.group(1).split()
+    raise Problem("the Makefile has no CC line")
+
+
+def c_flags(exercise_dir):
+    """The C flags the exercise's Makefile compiles the tests with."""
+    variables = {}
+    for line in (exercise_dir / "Makefile").read_text().splitlines():
+        m = re.match(r"^(\w+)\s*=\s*(.*)$", line)
+        if m:
+            variables[m.group(1)] = m.group(2)
+    flags = variables.get("ALL_CFLAGS", "")
+    return re.sub(
+        r"\$\((\w+)\)", lambda m: variables.get(m.group(1), ""), flags
+    ).split()
+
+
+def parse_tests(test_file):
+    """Map each test function to its task, and list the RUN_TEST order."""
+    task_of = {}
+    markers = []
+    current = None
+    run_order = []
+    for number, line in enumerate(test_file.read_text().splitlines(), 1):
+        m = TASK_MARKER.match(line)
+        if m:
+            current = int(m.group(1))
+            markers.append(current)
+            continue
+        m = TEST_DEFINITION.match(line)
+        if m:
+            if current is None:
+                raise Problem(
+                    f"{test_file.name}:{number}: {m.group(1)} comes before the first // TASK: marker"
+                )
+            if m.group(1) in task_of:
+                raise Problem(
+                    f"{test_file.name}:{number}: {m.group(1)} is defined twice"
+                )
+            task_of[m.group(1)] = current
+            continue
+        m = RUN_TEST.match(line)
+        if m:
+            run_order.append(m.group(1))
+    return task_of, markers, run_order
+
+
+def task_sections(instructions):
+    """The text of each '## N.' section of instructions.md, by task number."""
+    sections = {}
+    current = None
+    for line in instructions.read_text().splitlines():
+        m = TASK_HEADING.match(line)
+        if m:
+            current = int(m.group(1))
+            sections[current] = []
+        elif line.startswith("## "):
+            current = None
+        elif current is not None:
+            sections[current].append(line)
+    return {task: "\n".join(lines) for task, lines in sections.items()}
+
+
+def check_structure(exercise_dir, slug):
+    """Static checks. Returns (ownership, task_of, task_count)."""
+    meta = exercise_dir / ".meta"
+    ownership_file = meta / "ownership.json"
+    if not ownership_file.is_file():
+        raise Problem("missing .meta/ownership.json")
+    ownership = json.loads(ownership_file.read_text())
+    owned = ownership.get("tasks", {})
+    if not owned:
+        raise Problem(".meta/ownership.json assigns no functions to tasks")
+
+    sections = task_sections(exercise_dir / ".docs" / "instructions.md")
+    task_count = len(sections)
+    if sorted(sections) != list(range(1, task_count + 1)):
+        raise Problem(
+            f"instructions.md task headings are {sorted(sections)}, not 1..{task_count}"
+        )
+
+    task_of, markers, run_order = parse_tests(exercise_dir / f"{snake(slug)}_test.c")
+    if markers != sorted(markers) or len(set(markers)) != len(markers):
+        raise Problem(
+            f"// TASK: markers are {markers}; they must ascend, each used once"
+        )
+    if markers != list(range(1, task_count + 1)):
+        raise Problem(
+            f"// TASK: markers are {markers}, but instructions.md has tasks 1..{task_count}"
+        )
+    if run_order != list(task_of):
+        raise Problem(
+            "main() must RUN_TEST every test once, in the order they are defined"
+        )
+
+    stub_globals = set()
+    for line in (exercise_dir / f"{snake(slug)}.S").read_text().splitlines():
+        m = GLOBAL.match(line)
+        if m:
+            stub_globals.add(m.group(1))
+    if set(owned) != stub_globals:
+        missing = sorted(stub_globals - set(owned))
+        extra = sorted(set(owned) - stub_globals)
+        detail = []
+        if missing:
+            detail.append(f"stub globals not in ownership.json: {', '.join(missing)}")
+        if extra:
+            detail.append(
+                f"ownership.json names that are not stub globals: {', '.join(extra)}"
+            )
+        raise Problem("; ".join(detail))
+
+    for name, task in owned.items():
+        if task not in sections:
+            raise Problem(
+                f"ownership.json gives {name} to task {task}, which instructions.md lacks"
+            )
+        if f"`{name}`" not in sections[task]:
+            raise Problem(f"task {task} of instructions.md never mentions `{name}`")
+
+    return ownership, task_of, task_count
+
+
+def run(command, cwd, timeout=None):
+    return subprocess.run(
+        command,
+        cwd=cwd,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+        errors="replace",
+        timeout=timeout,
+    )
+
+
+def build_and_run(work, cc, owned, k, solution, exemplar):
+    """Link exemplar functions for tasks 1..k with stubs for the rest; return
+    (linked, {test: status}, output)."""
+    exemplar_defines = [
+        f"-D{name}=__accretive_exemplar_{name}"
+        for name, task in owned.items()
+        if task > k
+    ]
+    stub_defines = [
+        f"-D{name}=__accretive_stub_{name}" for name, task in owned.items() if task <= k
+    ]
+    objects = ["test.o", "vendor/unity.o", "stub.o"]
+
+    result = run([*cc, "-c", "-o", "stub.o", *stub_defines, solution], work)
+    if result.returncode != 0:
+        return False, {}, result.stdout
+    if k > 0:
+        result = run([*cc, "-c", "-o", "exemplar.o", *exemplar_defines, exemplar], work)
+        if result.returncode != 0:
+            return False, {}, result.stdout
+        objects.append("exemplar.o")
+
+    result = run([*cc, "-static", "-o", f"tests-{k}", *objects], work)
+    if result.returncode != 0:
+        return False, {}, result.stdout
+
+    try:
+        result = run(["qemu-riscv32", f"./tests-{k}"], work, timeout=RUN_TIMEOUT)
+        output = result.stdout
+    except subprocess.TimeoutExpired as e:
+        output = (e.stdout or b"").decode(errors="replace") + "\n[timed out]"
+    statuses = {}
+    for line in output.splitlines():
+        m = RESULT.match(line)
+        if m:
+            statuses[m.group(1)] = m.group(2)
+    return True, statuses, output
+
+
+def check_exercise(slug):
+    """Returns a list of problems; empty when the exercise is Accretive."""
+    exercise_dir = ROOT / "exercises" / "concept" / slug
+    if not exercise_dir.is_dir():
+        return [f"no concept exercise named {slug}"]
+    try:
+        ownership, task_of, task_count = check_structure(exercise_dir, slug)
+    except Problem as e:
+        return [str(e)]
+    owned = ownership["tasks"]
+    requires_task1 = ownership.get("requires-task1-to-link", False)
+
+    problems = []
+    with tempfile.TemporaryDirectory(prefix=f"exercism-accretive-{slug}-") as tmp:
+        work = Path(tmp)
+        shutil.copytree(exercise_dir, work, dirs_exist_ok=True)
+        test_file = work / f"{snake(slug)}_test.c"
+        test_file.write_text(
+            re.sub(r"(?m)^[ \t]*TEST_IGNORE\(\);[ \t]*$", "", test_file.read_text())
+        )
+
+        try:
+            cc = compiler(work)
+            cflags = c_flags(work)
+        except Problem as e:
+            return [str(e)]
+        for source, obj in (
+            (test_file.name, "test.o"),
+            ("vendor/unity.c", "vendor/unity.o"),
+        ):
+            result = run([*cc, *cflags, "-c", "-o", obj, source], work)
+            if result.returncode != 0:
+                return [f"{source} does not compile:\n{result.stdout}"]
+
+        solution = f"{snake(slug)}.S"
+        exemplar = ".meta/exemplar.S"
+        for k in range(task_count + 1):
+            linked, statuses, output = build_and_run(
+                work, cc, owned, k, solution, exemplar
+            )
+            if not linked:
+                if k == 0 and requires_task1:
+                    continue
+                stage = "the shipped stub" if k == 0 else f"tasks 1..{k} done"
+                problems.append(
+                    f"Mode A: with {stage}, the solution does not build:\n{indent(output)}"
+                )
+                break
+
+            failing = [
+                t
+                for t, task in task_of.items()
+                if task <= k and statuses.get(t) != "PASS"
+            ]
+            if failing:
+                problems.append(
+                    f"Mode B: with tasks 1..{k} done, these earlier tests do not pass: "
+                    f"{', '.join(failing)}\n{indent(evidence(output, failing))}"
+                )
+            if k < task_count:
+                next_tests = [t for t, task in task_of.items() if task == k + 1]
+                if next_tests and all(statuses.get(t) == "PASS" for t in next_tests):
+                    problems.append(
+                        f"free pass: with tasks 1..{k} done, every test for task {k + 1} "
+                        "already passes against the stub"
+                    )
+    return problems
+
+
+def indent(text):
+    return "\n".join("      " + line for line in text.rstrip().splitlines())
+
+
+def evidence(output, failing):
+    """The result lines of the failing tests; or, when some never reported
+    (the program crashed or hung), the end of the output, which says why."""
+    lines = output.rstrip().splitlines()
+    reported = [line for line in lines if any(f":{test}:" in line for test in failing)]
+    if len(reported) == len(failing):
+        return "\n".join(reported)
+    return "\n".join(reported + ["..."] + lines[-6:])
+
+
+def concept_slugs():
+    config = json.loads((ROOT / "config.json").read_text())
+    return [e["slug"] for e in config.get("exercises", {}).get("concept", [])]
+
+
+def main(argv):
+    for tool in ("zig", "qemu-riscv32"):
+        if shutil.which(tool) is None:
+            sys.exit(
+                f"{tool} is required but not installed. Please install it and make sure it's in your PATH."
+            )
+
+    slugs = argv or concept_slugs()
+    jobs = int(os.environ.get("JOBS", os.cpu_count() or 1))
+    failed = 0
+    with concurrent.futures.ThreadPoolExecutor(max_workers=jobs) as pool:
+        for slug, problems in zip(slugs, pool.map(check_exercise, slugs)):
+            if problems:
+                failed += 1
+                print(f"{slug}: NOT ACCRETIVE")
+                for problem in problems:
+                    print(f"  {problem}")
+            else:
+                print(f"{slug}: accretive")
+
+    print()
+    print(f"{len(slugs) - failed} of {len(slugs)} concept exercises are accretive")
+    return 1 if failed else 0
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv[1:]))

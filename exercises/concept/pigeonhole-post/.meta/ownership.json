@@ -1,0 +1,10 @@
+{
+  "tasks": {
+    "letters_in_first": 1,
+    "letters_in_third": 2,
+    "total_of_four": 3,
+    "deliver": 4,
+    "move_letters": 5,
+    "swap_pigeonholes": 6
+  }
+}

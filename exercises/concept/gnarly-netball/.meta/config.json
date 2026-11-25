@@ -1,0 +1,18 @@
+{
+  "authors": [
+    "keiravillekode"
+  ],
+  "files": {
+    "solution": [
+      "gnarly_netball.S"
+    ],
+    "test": [
+      "gnarly_netball_test.c"
+    ],
+    "exemplar": [
+      ".meta/exemplar.S"
+    ]
+  },
+  "icon": "netball-ladder",
+  "blurb": "Learn to multiply and divide in RISC-V assembly by keeping the numbers for an inter-school netball competition."
+}

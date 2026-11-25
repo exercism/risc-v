@@ -1,0 +1,18 @@
+{
+  "authors": [
+    "keiravillekode"
+  ],
+  "files": {
+    "solution": [
+      "pigeonhole_post.S"
+    ],
+    "test": [
+      "pigeonhole_post_test.c"
+    ],
+    "exemplar": [
+      ".meta/exemplar.S"
+    ]
+  },
+  "icon": "newsletter",
+  "blurb": "Learn about memory, addresses and offsets by counting letters in the pigeonholes of a Highlands village post office."
+}

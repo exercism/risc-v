@@ -1,0 +1,10 @@
+{
+  "tasks": {
+    "item_price": 1,
+    "restock": 2,
+    "stock_value": 3,
+    "items_in_aisle": 4,
+    "heaviest_crate": 5,
+    "items_to_shelve": 6
+  }
+}

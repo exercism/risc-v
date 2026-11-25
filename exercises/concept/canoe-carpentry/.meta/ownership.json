@@ -1,0 +1,9 @@
+{
+  "tasks": {
+    "plank_length": 1,
+    "hull_length": 2,
+    "timber_needed": 3,
+    "fleet_length": 4,
+    "fleet_cost": 5
+  }
+}

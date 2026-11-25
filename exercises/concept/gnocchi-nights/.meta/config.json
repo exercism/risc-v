@@ -1,0 +1,18 @@
+{
+  "authors": [
+    "keiravillekode"
+  ],
+  "files": {
+    "solution": [
+      "gnocchi_nights.S"
+    ],
+    "test": [
+      "gnocchi_nights_test.c"
+    ],
+    "exemplar": [
+      ".meta/exemplar.S"
+    ]
+  },
+  "icon": "assembly-line",
+  "blurb": "Learn to work on many array elements at once with RISC-V vector instructions, by preparing gnocchi for a café fundraiser in Apia."
+}

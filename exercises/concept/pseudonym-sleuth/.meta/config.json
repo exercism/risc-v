@@ -1,0 +1,18 @@
+{
+  "authors": [
+    "keiravillekode"
+  ],
+  "files": {
+    "solution": [
+      "pseudonym_sleuth.S"
+    ],
+    "test": [
+      "pseudonym_sleuth_test.c"
+    ],
+    "exemplar": [
+      ".meta/exemplar.S"
+    ]
+  },
+  "icon": "file-sniffer",
+  "blurb": "Learn about output parameters by helping a school mystery club in Apia unmask a poet who writes under a pseudonym."
+}

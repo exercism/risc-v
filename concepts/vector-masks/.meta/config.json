@@ -1,0 +1,7 @@
+{
+  "blurb": "Learn to compare vector elements into masks, and to count, find, merge and update only the elements you choose with RISC-V vector masks.",
+  "authors": [
+    "keiravillekode"
+  ],
+  "contributors": []
+}

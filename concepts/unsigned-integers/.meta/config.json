@@ -1,0 +1,7 @@
+{
+  "blurb": "Learn that the same 32 bits can be signed or unsigned, and use bltu, bgeu, sltu, divu and remu.",
+  "authors": [
+    "keiravillekode"
+  ],
+  "contributors": []
+}

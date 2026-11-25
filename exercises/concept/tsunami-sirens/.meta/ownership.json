@@ -1,0 +1,9 @@
+{
+  "tasks": {
+    "larger": 1,
+    "tide_change": 2,
+    "alert_level": 3,
+    "should_evacuate": 4,
+    "siren_minutes": 5
+  }
+}

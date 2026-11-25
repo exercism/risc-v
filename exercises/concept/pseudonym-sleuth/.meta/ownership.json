@@ -1,0 +1,9 @@
+{
+  "tasks": {
+    "split_clue": 1,
+    "desk_neighbours": 2,
+    "case_summary": 3,
+    "update_tally": 4,
+    "unscramble": 5
+  }
+}

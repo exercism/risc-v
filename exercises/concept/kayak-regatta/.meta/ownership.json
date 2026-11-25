@@ -1,0 +1,10 @@
+{
+  "tasks": {
+    "total_time": 1,
+    "fastest_lap": 2,
+    "best_improvement": 3,
+    "longest_paddle": 4,
+    "team_total": 5,
+    "lap_spread": 6
+  }
+}

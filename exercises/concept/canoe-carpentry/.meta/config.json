@@ -1,0 +1,18 @@
+{
+  "authors": [
+    "keiravillekode"
+  ],
+  "files": {
+    "solution": [
+      "canoe_carpentry.S"
+    ],
+    "test": [
+      "canoe_carpentry_test.c"
+    ],
+    "exemplar": [
+      ".meta/exemplar.S"
+    ]
+  },
+  "icon": "joiners-journey",
+  "blurb": "Learn how functions save ra and the saved registers on the stack by building outrigger canoes on a beach in Tonga."
+}

@@ -1,0 +1,7 @@
+{
+  "blurb": "Learn how C structs are laid out in memory: field offsets, alignment, padding, and arrays of structs.",
+  "authors": [
+    "keiravillekode"
+  ],
+  "contributors": []
+}

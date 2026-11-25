@@ -1,0 +1,18 @@
+{
+  "authors": [
+    "keiravillekode"
+  ],
+  "files": {
+    "solution": [
+      "ferry_timestamps.S"
+    ],
+    "test": [
+      "ferry_timestamps_test.c"
+    ],
+    "exemplar": [
+      ".meta/exemplar.S"
+    ]
+  },
+  "icon": "appointment-time",
+  "blurb": "Learn to work with 64-bit numbers in register pairs by keeping the timetable of a Tongan inter-island ferry."
+}

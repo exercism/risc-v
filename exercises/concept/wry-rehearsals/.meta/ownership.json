@@ -1,0 +1,10 @@
+{
+  "tasks": {
+    "line_length": 1,
+    "count_char": 2,
+    "first_word_length": 3,
+    "is_shouted": 4,
+    "whisper": 5,
+    "copy_cue": 6
+  }
+}

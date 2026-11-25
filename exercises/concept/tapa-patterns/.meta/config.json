@@ -1,0 +1,18 @@
+{
+  "authors": [
+    "keiravillekode"
+  ],
+  "files": {
+    "solution": [
+      "tapa_patterns.S"
+    ],
+    "test": [
+      "tapa_patterns_test.c"
+    ],
+    "exemplar": [
+      ".meta/exemplar.S"
+    ]
+  },
+  "icon": "mosaic-mischief",
+  "blurb": "Learn how to make temporary arrays on the stack by planning the motifs of Samoan siapo cloth."
+}

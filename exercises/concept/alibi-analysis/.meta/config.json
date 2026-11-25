@@ -1,0 +1,18 @@
+{
+  "authors": [
+    "keiravillekode"
+  ],
+  "files": {
+    "solution": [
+      "alibi_analysis.S"
+    ],
+    "test": [
+      "alibi_analysis_test.c"
+    ],
+    "exemplar": [
+      ".meta/exemplar.S"
+    ]
+  },
+  "icon": "top-secret",
+  "blurb": "Learn about comparisons and booleans by checking alibis for a school mystery in Papua New Guinea."
+}

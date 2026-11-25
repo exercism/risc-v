@@ -1,0 +1,18 @@
+{
+  "authors": [
+    "keiravillekode"
+  ],
+  "files": {
+    "solution": [
+      "script_scanner.S"
+    ],
+    "test": [
+      "script_scanner_test.c"
+    ],
+    "exemplar": [
+      ".meta/exemplar.S"
+    ]
+  },
+  "icon": "poetry-club",
+  "blurb": "Learn to scan strings many bytes at a time with RISC-V byte vectors and fault-only-first loads, by helping a theatre group in Suva check its script."
+}

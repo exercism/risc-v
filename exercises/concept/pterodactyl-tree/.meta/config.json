@@ -1,0 +1,18 @@
+{
+  "authors": [
+    "keiravillekode"
+  ],
+  "files": {
+    "solution": [
+      "pterodactyl_tree.S"
+    ],
+    "test": [
+      "pterodactyl_tree_test.c"
+    ],
+    "exemplar": [
+      ".meta/exemplar.S"
+    ]
+  },
+  "icon": "dragons-descendants",
+  "blurb": "Learn how RISC-V functions call themselves by drawing the family tree of a pterodactyl colony for a school science club."
+}

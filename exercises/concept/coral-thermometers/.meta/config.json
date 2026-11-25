@@ -1,0 +1,18 @@
+{
+  "authors": [
+    "keiravillekode"
+  ],
+  "files": {
+    "solution": [
+      "coral_thermometers.S"
+    ],
+    "test": [
+      "coral_thermometers_test.c"
+    ],
+    "exemplar": [
+      ".meta/exemplar.S"
+    ]
+  },
+  "icon": "the-weather-in-deather",
+  "blurb": "Learn about halfwords, sign extension and zero extension by reading coral reef temperature loggers in Vavaʻu."
+}

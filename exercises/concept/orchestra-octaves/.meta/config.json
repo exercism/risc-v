@@ -1,0 +1,18 @@
+{
+  "authors": [
+    "keiravillekode"
+  ],
+  "files": {
+    "solution": [
+      "orchestra_octaves.S"
+    ],
+    "test": [
+      "orchestra_octaves_test.c"
+    ],
+    "exemplar": [
+      ".meta/exemplar.S"
+    ]
+  },
+  "icon": "troupe-routines",
+  "blurb": "Learn about shifts by helping a Tongan school orchestra rehearse music from Swan Lake."
+}

@@ -1,0 +1,18 @@
+{
+  "authors": [
+    "keiravillekode"
+  ],
+  "files": {
+    "solution": [
+      "lighthouse_sightings.S"
+    ],
+    "test": [
+      "lighthouse_sightings_test.c"
+    ],
+    "exemplar": [
+      ".meta/exemplar.S"
+    ]
+  },
+  "icon": "maps",
+  "blurb": "Learn about bit sets by helping a lighthouse keeper in Tonga log the fishing boats that pass her headland."
+}

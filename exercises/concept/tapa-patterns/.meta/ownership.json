@@ -1,0 +1,9 @@
+{
+  "tasks": {
+    "count_distinct_motifs": 1,
+    "most_common_motif": 2,
+    "dye_for_row": 3,
+    "rotate_row": 4,
+    "smooth_row": 5
+  }
+}

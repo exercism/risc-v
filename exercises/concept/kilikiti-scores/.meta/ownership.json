@@ -1,0 +1,10 @@
+{
+  "tasks": {
+    "runs_by": 1,
+    "total_runs": 2,
+    "highest_score": 3,
+    "count_ducks": 4,
+    "add_bonus": 5,
+    "first_century": 6
+  }
+}

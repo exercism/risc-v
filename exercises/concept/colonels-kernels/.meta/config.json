@@ -1,0 +1,18 @@
+{
+  "authors": [
+    "keiravillekode"
+  ],
+  "files": {
+    "solution": [
+      "colonels_kernels.S"
+    ],
+    "test": [
+      "colonels_kernels_test.c"
+    ],
+    "exemplar": [
+      ".meta/exemplar.S"
+    ]
+  },
+  "icon": "gross-store",
+  "blurb": "Learn about structs, field offsets, padding and arrays of structs by keeping the records of a retired colonel's village store on Atiu, famous for its maize and popcorn kernels."
+}

@@ -1,0 +1,10 @@
+{
+  "tasks": {
+    "count_colour": 1,
+    "first_unmasked": 2,
+    "cap_donations": 3,
+    "discount_juniors": 4,
+    "junior_donations": 5,
+    "count_winners": 6
+  }
+}

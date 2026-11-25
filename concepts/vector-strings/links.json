@@ -1,0 +1,18 @@
+[
+  {
+    "url": "https://github.com/riscvarchive/riscv-v-spec/blob/v1.0/v-spec.adoc#unit-stride-fault-only-first-loads",
+    "description": "RISC-V \"V\" Vector Extension 1.0: unit-stride fault-only-first loads"
+  },
+  {
+    "url": "https://github.com/riscvarchive/riscv-v-spec/blob/v1.0/example/strlen.s",
+    "description": "RISC-V \"V\" Vector Extension 1.0: the strlen example"
+  },
+  {
+    "url": "https://github.com/riscvarchive/riscv-v-spec/blob/v1.0/v-spec.adoc#avl-encoding",
+    "description": "RISC-V \"V\" Vector Extension 1.0: vsetvli with zero as the count"
+  },
+  {
+    "url": "https://github.com/riscvarchive/riscv-v-spec/blob/v1.0/v-spec.adoc#vector-length-register-vl",
+    "description": "RISC-V \"V\" Vector Extension 1.0: the vl register"
+  }
+]

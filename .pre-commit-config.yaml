@@ -25,6 +25,11 @@ repos:
         language: system
         entry: bin/update-from-templates
         pass_filenames: false
+    -   id: check-syllabus
+        name: Check the syllabus rules in config.json
+        language: system
+        entry: bin/check-syllabus
+        pass_filenames: false
     -   id: no-globl
         name: Check that assembly files use .global rather than .globl
         language: pygrep

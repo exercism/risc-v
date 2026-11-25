@@ -1,0 +1,18 @@
+{
+  "authors": [
+    "keiravillekode"
+  ],
+  "files": {
+    "solution": [
+      "cuisine_quiz.S"
+    ],
+    "test": [
+      "cuisine_quiz_test.c"
+    ],
+    "exemplar": [
+      ".meta/exemplar.S"
+    ]
+  },
+  "icon": "high-score",
+  "blurb": "Learn to turn numbers into decimal text and back by running the scoreboard at a quiz night in a Nukuʻalofa café."
+}

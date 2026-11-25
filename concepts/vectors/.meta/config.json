@@ -1,0 +1,7 @@
+{
+  "blurb": "Learn to work on many array elements at once with RISC-V vector instructions, using vsetvli and a strip-mining loop.",
+  "authors": [
+    "keiravillekode"
+  ],
+  "contributors": []
+}

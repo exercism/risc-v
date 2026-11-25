@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://github.com/riscvarchive/riscv-v-spec/blob/v1.0/v-spec.adoc#vector-reduction-operations",
+    "description": "RISC-V \"V\" Vector Extension 1.0: vector reduction operations"
+  },
+  {
+    "url": "https://github.com/riscvarchive/riscv-v-spec/blob/v1.0/v-spec.adoc#integer-scalar-move-instructions",
+    "description": "RISC-V \"V\" Vector Extension 1.0: integer scalar move instructions, vmv.x.s and vmv.s.x"
+  },
+  {
+    "url": "https://github.com/riscvarchive/riscv-v-spec/releases/tag/v1.0",
+    "description": "RISC-V \"V\" Vector Extension, version 1.0"
+  }
+]

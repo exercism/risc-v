@@ -1,0 +1,9 @@
+{
+  "tasks": {
+    "is_earlier": 1,
+    "alibis_agree": 2,
+    "was_present": 3,
+    "is_suspect": 4,
+    "is_cleared": 5
+  }
+}

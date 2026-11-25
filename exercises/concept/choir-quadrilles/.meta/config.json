@@ -1,0 +1,18 @@
+{
+  "authors": [
+    "keiravillekode"
+  ],
+  "files": {
+    "solution": [
+      "choir_quadrilles.S"
+    ],
+    "test": [
+      "choir_quadrilles_test.c"
+    ],
+    "exemplar": [
+      ".meta/exemplar.S"
+    ]
+  },
+  "icon": "lucky-numbers",
+  "blurb": "Learn to reverse, gather, slide and compress vector elements with RISC-V vector permutations, by moving the singers of a school choir in Tonga through the figures of a quadrille."
+}

@@ -1,0 +1,18 @@
+{
+  "authors": [
+    "keiravillekode"
+  ],
+  "files": {
+    "solution": [
+      "wry_rehearsals.S"
+    ],
+    "test": [
+      "wry_rehearsals_test.c"
+    ],
+    "exemplar": [
+      ".meta/exemplar.S"
+    ]
+  },
+  "icon": "stage-heralding",
+  "blurb": "Learn about strings, bytes and the zero terminator by helping an actor rehearse the wry lines of a school comedy in Port Moresby."
+}
