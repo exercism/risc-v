@@ -190,7 +190,8 @@ for slug in "${exercise_slugs[@]}"; do
 
     icon=$(jq -r '.icon // empty' "$meta")
     if [[ -z $icon ]]; then
-        note "$meta has no icon"
+        # $meta has no icon
+        continue
     elif [[ -n ${practice_exists[$icon]:-} ]]; then
         note "$slug uses icon '$icon', which belongs to the practice exercise of that name"
     elif [[ -n ${icon_used_by[$icon]:-} ]]; then
