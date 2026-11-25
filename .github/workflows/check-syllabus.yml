@@ -30,7 +30,7 @@ jobs:
       #     prerequisites
       #   * practice exercises listed by ascending difficulty then by name,
       #     compared case-insensitively
-      #   * every concept exercise icon is not the icon of
+      #   * every concept exercise has its own icon, which is not the icon of
       #     a practice exercise
       #
       - name: Check syllabus rules
