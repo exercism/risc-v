@@ -13,5 +13,6 @@
       ".meta/exemplar.S"
     ]
   },
+  "icon": "lighthouse-keeper",
   "blurb": "Learn about bit sets by helping a lighthouse keeper in Tonga log the fishing boats that pass her headland."
 }

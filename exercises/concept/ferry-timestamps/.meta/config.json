@@ -13,5 +13,6 @@
       ".meta/exemplar.S"
     ]
   },
+  "icon": "island-ferry",
   "blurb": "Learn to work with 64-bit numbers in register pairs by keeping the timetable of a Tongan inter-island ferry."
 }
