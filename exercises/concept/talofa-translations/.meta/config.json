@@ -1,0 +1,18 @@
+{
+  "authors": [
+    "keiravillekode"
+  ],
+  "files": {
+    "solution": [
+      "talofa_translations.S"
+    ],
+    "test": [
+      "talofa_translations_test.c"
+    ],
+    "exemplar": [
+      ".meta/exemplar.S"
+    ]
+  },
+  "icon": "translation-service",
+  "blurb": "Learn about the data section, strings and tables in read-only data, and variables that last between calls, by building a phrasebook kiosk for a Samoan language club."
+}

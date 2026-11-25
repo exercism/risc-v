@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://github.com/jameslzhu/riscv-card/releases/download/latest/riscv-card.pdf",
+    "description": "RISC-V reference card"
+  },
+  {
+    "url": "https://github.com/riscv/riscv-isa-manual/releases",
+    "description": "RISC-V specifications: integer register-register and register-immediate instructions"
+  }
+]

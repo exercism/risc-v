@@ -1,0 +1,9 @@
+{
+  "tasks": {
+    "first_four": 1,
+    "add_knocks": 2,
+    "flip_knocks": 3,
+    "remove_knocks": 4,
+    "matching_knocks": 5
+  }
+}

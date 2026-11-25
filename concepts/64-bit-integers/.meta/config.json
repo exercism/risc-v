@@ -1,0 +1,7 @@
+{
+  "blurb": "Learn to keep 64-bit numbers in register pairs, and add, subtract, compare and multiply them with carries, borrows and mulhu.",
+  "authors": [
+    "keiravillekode"
+  ],
+  "contributors": []
+}

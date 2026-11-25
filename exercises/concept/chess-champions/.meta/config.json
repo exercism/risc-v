@@ -1,0 +1,18 @@
+{
+  "authors": [
+    "keiravillekode"
+  ],
+  "files": {
+    "solution": [
+      "chess_champions.S"
+    ],
+    "test": [
+      "chess_champions_test.c"
+    ],
+    "exemplar": [
+      ".meta/exemplar.S"
+    ]
+  },
+  "icon": "chessboard",
+  "blurb": "Learn about .equ constants by helping a school chess club in Tonga get ready for a tournament."
+}

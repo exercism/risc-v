@@ -32,3 +32,6 @@ jobs:
 
       - name: Verify all exercises
         run: bin/verify-exercises
+
+      - name: Check that concept exercises are accretive
+        run: bin/check-accretive

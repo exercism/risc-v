@@ -19,7 +19,9 @@ fi
 vendor_hash=$(hash_dir templates/vendor)
 
 num_updated=0
-for exercise_dir in exercises/practice/*; do
+shopt -s nullglob
+for exercise_dir in exercises/{concept,practice}/*/; do
+    exercise_dir=${exercise_dir%/}
     makefile=${exercise_dir}/Makefile
     if ! cmp -s templates/Makefile "${makefile}"; then
         echo "Updating ${makefile}"

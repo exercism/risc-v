@@ -1,0 +1,9 @@
+{
+  "tasks": {
+    "format_score": 1,
+    "format_signed": 2,
+    "format_padded": 3,
+    "parse_score": 4,
+    "parse_signed": 5
+  }
+}

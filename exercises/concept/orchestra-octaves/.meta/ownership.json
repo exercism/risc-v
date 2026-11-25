@@ -1,0 +1,10 @@
+{
+  "tasks": {
+    "octave_up": 1,
+    "octave_down": 2,
+    "note_octave": 3,
+    "note_duration": 4,
+    "pack_note": 5,
+    "offset_after_turns": 6
+  }
+}

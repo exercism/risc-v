@@ -1,0 +1,10 @@
+{
+  "tasks": {
+    "fill_trays": 1,
+    "add_extra": 2,
+    "scale_recipe": 3,
+    "add_portions": 4,
+    "leftovers": 5,
+    "room_on_trays": 6
+  }
+}

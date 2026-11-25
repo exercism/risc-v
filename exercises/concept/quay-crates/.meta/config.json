@@ -1,0 +1,18 @@
+{
+  "authors": [
+    "keiravillekode"
+  ],
+  "files": {
+    "solution": [
+      "quay_crates.S"
+    ],
+    "test": [
+      "quay_crates_test.c"
+    ],
+    "exemplar": [
+      ".meta/exemplar.S"
+    ]
+  },
+  "icon": "quayside-crew",
+  "blurb": "Learn the basics of RISC-V assembly by counting cargo crates on a Tongan quay."
+}

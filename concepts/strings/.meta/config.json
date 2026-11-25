@@ -1,0 +1,7 @@
+{
+  "blurb": "Learn how text is stored as bytes, and how to read, change and write zero-terminated strings one character at a time.",
+  "authors": [
+    "keiravillekode"
+  ],
+  "contributors": []
+}

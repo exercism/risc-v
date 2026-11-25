@@ -1,0 +1,14 @@
+[
+  {
+    "url": "https://github.com/riscv-non-isa/riscv-elf-psabi-doc/blob/master/riscv-cc.adoc",
+    "description": "RISC-V calling convention: stack alignment and the frame pointer"
+  },
+  {
+    "url": "https://github.com/riscv-non-isa/riscv-asm-manual/blob/main/src/asm-manual.adoc",
+    "description": "RISC-V Assembly Programmer's Manual"
+  },
+  {
+    "url": "https://github.com/jameslzhu/riscv-card/releases/download/latest/riscv-card.pdf",
+    "description": "RISC-V reference card"
+  }
+]

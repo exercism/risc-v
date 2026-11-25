@@ -1,0 +1,9 @@
+{
+  "tasks": {
+    "hold_capacity": 1,
+    "crates_with_spares": 2,
+    "space_left": 3,
+    "crates_on_board": 4,
+    "checked_count": 5
+  }
+}

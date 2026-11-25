@@ -1,0 +1,18 @@
+{
+  "authors": [
+    "keiravillekode"
+  ],
+  "files": {
+    "solution": [
+      "tsunami_sirens.S"
+    ],
+    "test": [
+      "tsunami_sirens_test.c"
+    ],
+    "exemplar": [
+      ".meta/exemplar.S"
+    ]
+  },
+  "icon": "weather-forecast",
+  "blurb": "Learn about branches and labels by building a model tsunami warning panel for a school drill in Samoa."
+}

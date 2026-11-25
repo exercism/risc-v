@@ -1,0 +1,17 @@
+{
+  "authors": [
+    "keiravillekode"
+  ],
+  "files": {
+    "solution": [
+      "signal_pennants.S"
+    ],
+    "test": [
+      "signal_pennants_test.c"
+    ],
+    "exemplar": [
+      ".meta/exemplar.S"
+    ]
+  },
+  "blurb": "Learn about lookup tables by helping a sailing club in Port Vila practise the signal flags and their code words."
+}

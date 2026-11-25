@@ -1,0 +1,18 @@
+{
+  "authors": [
+    "keiravillekode"
+  ],
+  "files": {
+    "solution": [
+      "queue_quandary.S"
+    ],
+    "test": [
+      "queue_quandary_test.c"
+    ],
+    "exemplar": [
+      ".meta/exemplar.S"
+    ]
+  },
+  "icon": "take-a-number",
+  "blurb": "Learn about unsigned integers by driving the ticket machine at a busy post office in Lae."
+}

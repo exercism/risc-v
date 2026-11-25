@@ -1,0 +1,18 @@
+[
+  {
+    "url": "https://github.com/riscvarchive/riscv-v-spec/blob/v1.0/v-spec.adoc#vector-integer-compare-instructions",
+    "description": "RISC-V \"V\" Vector Extension 1.0: vector integer compare instructions"
+  },
+  {
+    "url": "https://github.com/riscvarchive/riscv-v-spec/blob/v1.0/v-spec.adoc#vector-mask-instructions",
+    "description": "RISC-V \"V\" Vector Extension 1.0: mask logic, vcpop.m and vfirst.m"
+  },
+  {
+    "url": "https://github.com/riscvarchive/riscv-v-spec/blob/v1.0/v-spec.adoc#vector-tail-agnostic-and-vector-mask-agnostic-vta-and-vma",
+    "description": "RISC-V \"V\" Vector Extension 1.0: mask and tail policies"
+  },
+  {
+    "url": "https://github.com/riscvarchive/riscv-v-spec/releases/tag/v1.0",
+    "description": "RISC-V \"V\" Vector Extension, version 1.0"
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "tasks": {
+    "next_ticket": 1,
+    "tickets_waiting": 2,
+    "is_valid_counter": 3,
+    "served_first": 4,
+    "average_wait": 5,
+    "seconds_part": 6
+  }
+}

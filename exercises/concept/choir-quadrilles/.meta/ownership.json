@@ -1,0 +1,9 @@
+{
+  "tasks": {
+    "every_other": 1,
+    "reverse_tune": 2,
+    "zigzag": 3,
+    "keep_high_notes": 4,
+    "echo_previous": 5
+  }
+}

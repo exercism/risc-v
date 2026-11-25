@@ -1,0 +1,10 @@
+{
+  "tasks": {
+    "script_length": 1,
+    "count_pauses": 2,
+    "count_capitals": 3,
+    "shout": 4,
+    "find_cue": 5,
+    "copy_line": 6
+  }
+}

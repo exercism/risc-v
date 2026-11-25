@@ -1,0 +1,18 @@
+[
+  {
+    "url": "https://github.com/riscvarchive/riscv-v-spec/blob/v1.0/v-spec.adoc#vector-permutation-instructions",
+    "description": "RISC-V \"V\" Vector Extension 1.0: slides, vrgather and vcompress"
+  },
+  {
+    "url": "https://github.com/riscvarchive/riscv-v-spec/blob/v1.0/v-spec.adoc#vector-strided-instructions",
+    "description": "RISC-V \"V\" Vector Extension 1.0: strided loads and stores"
+  },
+  {
+    "url": "https://github.com/riscvarchive/riscv-v-spec/blob/v1.0/v-spec.adoc#vector-element-index-instruction",
+    "description": "RISC-V \"V\" Vector Extension 1.0: vid.v"
+  },
+  {
+    "url": "https://github.com/riscvarchive/riscv-v-spec/releases/tag/v1.0",
+    "description": "RISC-V \"V\" Vector Extension, version 1.0"
+  }
+]

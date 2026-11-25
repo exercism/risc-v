@@ -1,0 +1,18 @@
+{
+  "authors": [
+    "keiravillekode"
+  ],
+  "files": {
+    "solution": [
+      "masquerade_ball.S"
+    ],
+    "test": [
+      "masquerade_ball_test.c"
+    ],
+    "exemplar": [
+      ".meta/exemplar.S"
+    ]
+  },
+  "icon": "mask-credit-card",
+  "blurb": "Learn to compare, count, find and choose vector elements with RISC-V vector masks, by helping run a school masquerade ball in Apia."
+}

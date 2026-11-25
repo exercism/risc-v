@@ -1,0 +1,10 @@
+{
+  "tasks": {
+    "colony_size": 1,
+    "band_total": 2,
+    "climbing_routes": 3,
+    "count_family": 4,
+    "count_generations": 5,
+    "largest_wingspan": 6
+  }
+}

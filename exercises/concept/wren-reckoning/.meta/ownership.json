@@ -1,0 +1,9 @@
+{
+  "tasks": {
+    "total_sightings": 1,
+    "weeks_to_train": 2,
+    "digit_count": 3,
+    "digit_sum": 4,
+    "reverse_digits": 5
+  }
+}

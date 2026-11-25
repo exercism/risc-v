@@ -1,0 +1,10 @@
+{
+  "tasks": {
+    "sight": 1,
+    "has_passed": 2,
+    "missing": 3,
+    "boats_seen": 4,
+    "first_boat": 5,
+    "log_from_flags": 6
+  }
+}

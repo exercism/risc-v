@@ -1,0 +1,9 @@
+{
+  "tasks": {
+    "catch_count": 1,
+    "act_score": 2,
+    "encore": 3,
+    "show_total": 4,
+    "crowd_rating": 5
+  }
+}

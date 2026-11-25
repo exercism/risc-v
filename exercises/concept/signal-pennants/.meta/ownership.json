@@ -1,0 +1,9 @@
+{
+  "tasks": {
+    "phonetic_length": 1,
+    "phonetic_word": 2,
+    "flag_colours": 3,
+    "colour_count": 4,
+    "spell_length": 5
+  }
+}

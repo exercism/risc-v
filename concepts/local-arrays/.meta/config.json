@@ -1,0 +1,7 @@
+{
+  "blurb": "Learn how a RISC-V function makes room for a temporary array in its own stack frame, of a fixed size or a size known only at run time.",
+  "authors": [
+    "keiravillekode"
+  ],
+  "contributors": []
+}

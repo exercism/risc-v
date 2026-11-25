@@ -1,0 +1,148 @@
+#!/usr/bin/env python3
+"""Add a concept exercise, and the concept it teaches, to the track.
+
+Usage:
+  bin/add-concept-exercise <exercise-slug> "<Exercise Name>" \\
+      <concept-slug> "<Concept Name>" [prerequisite-concept...]
+
+This appends the concept to the "concepts" array and the exercise to
+"exercises.concept" in config.json (with UUIDs from bin/configlet uuid), so
+the two arrays stay in the same order. It then creates whatever is missing of
+the exercise's and concept's files: the Makefile and vendor directory from
+templates/, and empty skeletons of the rest. Existing files are left alone,
+so it can also register an exercise whose files are already written.
+
+Afterwards, write the files, keep concepts/<concept>/introduction.md and
+exercises/concept/<exercise>/.docs/introduction.md byte-identical, and run:
+
+  bin/verify-exercises <exercise-slug>
+  bin/check-accretive <exercise-slug>
+  bin/check-syllabus
+"""
+
+import json
+import shutil
+import subprocess
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+
+
+def uuid():
+    return subprocess.run(
+        [str(ROOT / "bin" / "configlet"), "uuid"],
+        check=True,
+        stdout=subprocess.PIPE,
+        text=True,
+    ).stdout.strip()
+
+
+def write_if_missing(path, text):
+    if not path.exists():
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(text)
+        print(f"created {path.relative_to(ROOT)}")
+
+
+def main(argv):
+    if len(argv) < 4:
+        sys.exit(__doc__)
+    slug, name, concept, concept_name, *prerequisites = argv
+    snake = slug.replace("-", "_")
+
+    config_path = ROOT / "config.json"
+    config = json.loads(config_path.read_text())
+    concepts = config.setdefault("concepts", [])
+    exercises = config["exercises"].setdefault("concept", [])
+    known = {c["slug"] for c in concepts}
+
+    for prerequisite in prerequisites:
+        if prerequisite not in known:
+            sys.exit(
+                f"prerequisite '{prerequisite}' is not a concept yet; add the exercise teaching it first"
+            )
+
+    if concept not in known:
+        concepts.append({"uuid": uuid(), "slug": concept, "name": concept_name})
+        print(f"added concept {concept}")
+    if all(e["slug"] != slug for e in exercises):
+        exercises.append(
+            {
+                "slug": slug,
+                "name": name,
+                "uuid": uuid(),
+                "concepts": [concept],
+                "prerequisites": prerequisites,
+                "status": "beta",
+            }
+        )
+        print(f"added concept exercise {slug}")
+    config_path.write_text(json.dumps(config, indent=2, ensure_ascii=False) + "\n")
+
+    concept_dir = ROOT / "concepts" / concept
+    exercise_dir = ROOT / "exercises" / "concept" / slug
+
+    write_if_missing(concept_dir / "introduction.md", "# Introduction\n")
+    write_if_missing(concept_dir / "about.md", "# About\n")
+    write_if_missing(concept_dir / "links.json", "[]\n")
+    write_if_missing(
+        concept_dir / ".meta" / "config.json",
+        json.dumps({"blurb": "", "authors": [], "contributors": []}, indent=2) + "\n",
+    )
+
+    write_if_missing(
+        exercise_dir / ".docs" / "introduction.md",
+        (concept_dir / "introduction.md").read_text(),
+    )
+    write_if_missing(
+        exercise_dir / ".docs" / "instructions.md", "# Instructions\n\n## 1. \n"
+    )
+    write_if_missing(
+        exercise_dir / ".docs" / "hints.md", "# Hints\n\n## General\n\n## 1. \n"
+    )
+    write_if_missing(exercise_dir / f"{snake}.S", ".text\n")
+    write_if_missing(exercise_dir / ".meta" / "exemplar.S", ".text\n")
+    write_if_missing(
+        exercise_dir / f"{snake}_test.c",
+        '#include "vendor/unity.h"\n\n#include <stdint.h>\n\nvoid setUp(void) {\n}\n\n'
+        "void tearDown(void) {\n}\n\n// TASK: 1\n\nint main(void) {\n    UNITY_BEGIN();\n"
+        "    return UNITY_END();\n}\n",
+    )
+    write_if_missing(
+        exercise_dir / ".meta" / "ownership.json",
+        json.dumps({"tasks": {}}, indent=2) + "\n",
+    )
+    write_if_missing(
+        exercise_dir / ".meta" / "design.md",
+        "# Design\n\n## Learning objectives\n\n## Out of scope\n\n- Floating point, which this track does not "
+        f"cover.\n\n## Concepts\n\n- `{concept}`\n\n## Prerequisites\n\n"
+        + "".join(f"- `{p}`\n" for p in prerequisites),
+    )
+    write_if_missing(
+        exercise_dir / ".meta" / "config.json",
+        json.dumps(
+            {
+                "authors": [],
+                "files": {
+                    "solution": [f"{snake}.S"],
+                    "test": [f"{snake}_test.c"],
+                    "exemplar": [".meta/exemplar.S"],
+                },
+                "icon": "",
+                "blurb": "",
+            },
+            indent=2,
+        )
+        + "\n",
+    )
+    write_if_missing(
+        exercise_dir / "Makefile", (ROOT / "templates" / "Makefile").read_text()
+    )
+    if not (exercise_dir / "vendor").exists():
+        shutil.copytree(ROOT / "templates" / "vendor", exercise_dir / "vendor")
+        print(f"created {(exercise_dir / 'vendor').relative_to(ROOT)}")
+
+
+if __name__ == "__main__":
+    main(sys.argv[1:])

@@ -1,0 +1,9 @@
+{
+  "tasks": {
+    "greeting": 1,
+    "thank_you": 2,
+    "days_in_month": 3,
+    "day_of_year": 4,
+    "visitors": 5
+  }
+}

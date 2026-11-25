@@ -1,0 +1,18 @@
+{
+  "authors": [
+    "keiravillekode"
+  ],
+  "files": {
+    "solution": [
+      "wren_reckoning.S"
+    ],
+    "test": [
+      "wren_reckoning_test.c"
+    ],
+    "exemplar": [
+      ".meta/exemplar.S"
+    ]
+  },
+  "icon": "bird-count",
+  "blurb": "Learn about loops in RISC-V assembly by helping a Samoan school nature club with its bird count."
+}
