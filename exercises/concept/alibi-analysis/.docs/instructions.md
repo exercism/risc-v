@@ -2,7 +2,7 @@
 
 Kila runs the mystery club at her secondary school in Goroka.
 On Friday, the school band's violin bow went missing from the music room, just before the drama club's dress rehearsal.
-Kila is sure that someone only borrowed it, but she wants to find out who.
+She wants to find out who borrowed it.
 Kila has collected every student's alibi: the story of where they were, and when.
 
 Kila writes every time as the number of minutes since midnight.

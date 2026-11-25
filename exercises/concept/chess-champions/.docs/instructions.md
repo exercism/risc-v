@@ -1,10 +1,10 @@
 # Instructions
 
 The chess club at your school in Nukuʻalofa, Tonga, meets every Wednesday after classes.
-This year, for the first time, the club will send a team of four players to the national schools tournament.
+This year, for the first time, the club will send a team of four players to a schools tournament.
 
-A visiting coach has come to help the team prepare.
-She has brought a small electronic chess board that the club can program, and she asks you to write some functions for it.
+The club's coach, Mr Havili, played for Tonga at the Chess Olympiad when he was young.
+The club raised money with a car wash to buy a small electronic chess board that they can program, and he asks you to write some functions for it.
 
 The test file gives each chess piece, and each game result, a number code:
 
