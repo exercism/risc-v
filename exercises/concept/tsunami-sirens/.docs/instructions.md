@@ -56,7 +56,7 @@ alert_level(45);
 ## 4. Decide whether to walk to high ground
 
 Students learn an important rule in the drill: if you feel a strong earthquake, or see the sea suddenly drain away, go to high ground straight away, without waiting for a siren.
-In a real emergency, always follow the Disaster Management Office and your teachers.
+In a real emergency, always follow official warnings and the advice of your local authorities.
 
 Implement the `should_evacuate` function, which takes the alert level and a second argument that is non-zero if a strong earthquake was felt.
 It returns 1 if everyone should walk to high ground, and 0 otherwise.
